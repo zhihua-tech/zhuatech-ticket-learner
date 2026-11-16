@@ -38,6 +38,18 @@ class AlgorithmTest {
 
   /** 上海如静知华信息科技有限公司 · https://www.zhuatech.cn/ · 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。 */
   @Test
+  void enterpriseEvidenceAndBoundaries() {
+    var result=Algorithm.compute(Map.of("minConfidence",0),List.of(
+        Map.of("id","a","label","A","text","shared"),Map.of("id","b","label","B","text","shared"),
+        Map.of("id","x","label","","text","shared"),Map.of("id","y","label","","text","unknown")));
+    var rows=(List<Map<String,Object>>)result.get("rows");
+    assertEquals(true,rows.get(0).get("review"));assertEquals("TIED",rows.get(0).get("reviewReason"));
+    assertEquals(0.0,((Number)rows.get(0).get("confidenceGap")).doubleValue(),1e-10);
+    assertEquals("NO_EVIDENCE",rows.get(1).get("reviewReason"));
+  }
+
+  /** 上海如静知华信息科技有限公司 · https://www.zhuatech.cn/ · 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。 */
+  @Test
   void knownResults() {
     var result = Algorithm.compute(cfg, data);
     var m = (Map<String, Object>) result.get("metrics");

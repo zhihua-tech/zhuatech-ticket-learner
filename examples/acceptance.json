@@ -1,0 +1,23 @@
+{
+  "title": "工单分流复核依据",
+  "settings": {
+    "minConfidence": 0
+  },
+  "rows": [
+    {
+      "id": "T1",
+      "label": "A",
+      "text": "common"
+    },
+    {
+      "id": "T2",
+      "label": "B",
+      "text": "common"
+    },
+    {
+      "id": "T3",
+      "label": "",
+      "text": "common"
+    }
+  ]
+}

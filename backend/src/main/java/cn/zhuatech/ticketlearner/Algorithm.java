@@ -71,6 +71,12 @@ final class Algorithm {
       double sum = 0;
       for (double v : scores.values()) sum += Math.exp(v - max);
       double confidence = 1 / sum;
+      var ranked = scores.entrySet().stream()
+          .sorted(Map.Entry.<String,Double>comparingByValue().reversed().thenComparing(Map.Entry.comparingByKey())).toList();
+      double runner = Math.exp(ranked.get(1).getValue() - max) / sum;
+      double gap = Math.max(0, confidence - runner);
+      String reason = ts.isEmpty() ? "NO_EVIDENCE" : gap <= 1e-12 ? "TIED" :
+          confidence < threshold ? "LOW_CONFIDENCE" : "ACCEPT";
       out.add(
           Map.of(
               "id",
@@ -82,7 +88,10 @@ final class Algorithm {
               "knownTokens",
               ts.size(),
               "review",
-              ts.isEmpty() || confidence < threshold));
+              !reason.equals("ACCEPT"),
+              "reviewReason", reason,
+              "alternative", ranked.get(1).getKey(),
+              "confidenceGap", gap));
     }
     return result(
         Map.of(
