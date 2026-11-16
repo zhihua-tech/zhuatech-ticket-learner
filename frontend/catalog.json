@@ -1,0 +1,74 @@
+{
+  "title": "知华工单分类训练台",
+  "english": "Ticket Classifier",
+  "scene": "工单分流",
+  "description": "用标注工单训练多项式朴素贝叶斯模型，对未标注工单预测类别、置信度及人工复核标志。",
+  "limit": "小样本、陌生词与类别漂移会影响判断；低置信度不自动派单。",
+  "settings": {
+    "minConfidence": 0.67
+  },
+  "rows": [
+    {
+      "id": "T1",
+      "label": "物流",
+      "text": "快递 配送 物流"
+    },
+    {
+      "id": "T2",
+      "label": "账单",
+      "text": "发票 金额 支付"
+    },
+    {
+      "id": "T3",
+      "label": "物流",
+      "text": "快递 包裹"
+    },
+    {
+      "id": "T4",
+      "label": "",
+      "text": "快递 配送"
+    }
+  ],
+  "labels": {
+    "id": "编号",
+    "text": "正文",
+    "unit": "对齐单位",
+    "label": "类别",
+    "minConfidence": "置信度下限",
+    "reference": "参考稿",
+    "hypothesis": "识别稿",
+    "size": "窗口长度",
+    "overlap": "重叠长度",
+    "gpuGiB": "设备显存 GiB",
+    "reserveGiB": "预留 GiB",
+    "paramsB": "参数量（十亿）",
+    "weightBits": "权重位宽",
+    "layers": "层数",
+    "kvHeads": "KV 头数",
+    "headDim": "头维度",
+    "kvBytes": "KV 字节数",
+    "context": "上下文长度",
+    "concurrency": "并发数",
+    "group": "来源组",
+    "train": "训练集 %",
+    "validation": "验证集 %",
+    "seed": "划分种子",
+    "vector": "向量",
+    "threshold": "相似度阈值",
+    "k": "排序截断 K",
+    "relevant": "相关文档",
+    "baseline": "基线排行",
+    "candidate": "候选排行",
+    "annotator": "标注员",
+    "minVotes": "最少票数",
+    "agreement": "一致率下限",
+    "parent": "父节点",
+    "start": "开始毫秒",
+    "end": "结束毫秒",
+    "budget": "总预算",
+    "reserve": "回复预留",
+    "tokens": "成本",
+    "value": "价值",
+    "required": "必选"
+  }
+}
